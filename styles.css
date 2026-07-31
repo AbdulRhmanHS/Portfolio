@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: initial;
+  text-decoration: none;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+  padding: 0;
+}
+
+.bottom-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 200px;
+  background-color: antiquewhite;
+}
+
+.bottom-header img {
+  width: auto;
+  height: 200px;
+  align-self: center;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  justify-items: center;
+  margin: 50px;
+}
+
+.cards {
+  min-height: 400px;
+  min-width: 380px;
+  background-color: lightgray;
+}
+
+footer {
+  background-color: antiquewhite;
+}
