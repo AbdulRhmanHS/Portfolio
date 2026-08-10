@@ -1,3 +1,19 @@
+/* 
+-- Responsiveness --
+TODO: Make the cards font more responsive
+TODO: Make the responsive design for mobile screens
+TODO: Make the responsive design for wide screens
+
+-- Colors and fonts --
+TODO: Group the CSS using variables
+TODO: Apply a different suitable color combination
+TODO: Apply a suitable font
+
+-- Themes and menu --
+TODO: Hide the menu elements and make a hamburger menu transition
+TODO: Make a dark theme
+*/
+
 body {
   margin: 0;
 }
@@ -86,35 +102,36 @@ main {
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
   justify-items: center;
-  padding: 50px clamp(52px, 5vw, 104px);
+  padding: 50px clamp(16px, 5vw, 104px);
   background-color: #edf7faff;
 }
 
 .cards {
   display: grid;
-  grid-template-rows: 2fr 1fr;
-  row-gap: 10px;
-  height: 635px;
-  width: 100%;
+  /* width: 100%; */
+  max-width: 520px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.1) 0 2px 10px;
   border-radius: 8px;
   overflow: hidden;
 }
 
+.cards img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  display: block;
+}
+
 .cards .upper {
-  background-color: rgb(148, 235, 255);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2.5rem;
+  width: 100%;
 }
 
 .cards .lower {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  padding: 20px;
+  gap: 16px;
+  padding: 32px;
 }
 
 .name-nav {
@@ -166,7 +183,7 @@ footer {
   font-size: 2rem;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1340px) {
   main {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -196,7 +213,7 @@ footer {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 868px) {
   main {
     grid-template-columns: 1fr;
   }
