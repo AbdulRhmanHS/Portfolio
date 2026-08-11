@@ -1,8 +1,8 @@
 /* 
 -- Responsiveness --
-TODO: Make the cards font more responsive
-TODO: Make the responsive design for mobile screens
-TODO: Make the responsive design for wide screens
+DONE: Make the cards font more responsive
+DONE: Make the responsive design for mobile screens
+DONE: Make the responsive design for wide screens
 
 -- Colors and fonts --
 TODO: Group the CSS using variables
@@ -68,7 +68,7 @@ ul {
   height: calc(100vh - 100px);
   display: flex;
   justify-content: space-between;
-  margin: 0 clamp(52px, 5vw, 104px);
+  margin: 0 clamp(24px, 6vw, 104px);
   gap: clamp(104px, 10vw, 208px);
 }
 
@@ -103,7 +103,6 @@ main {
   gap: 32px;
   justify-items: center;
   padding: 50px clamp(16px, 5vw, 104px);
-  background-color: #edf7faff;
 }
 
 .cards {
@@ -139,14 +138,16 @@ main {
   justify-content: space-between;
 }
 
-.name-nav p {
-  font-size: 2rem;
+.name-nav h1 {
+  font-weight: lighter;
+  font-size: 1.8rem;
 }
 
-.cards .icons {
+.name-nav .icons {
   display: flex;
   gap: 20px;
   font-size: 1.5rem;
+  align-items: center;
 }
 
 .cards .description {
@@ -183,6 +184,12 @@ footer {
   font-size: 2rem;
 }
 
+@media (min-width: 1921px) {
+  main {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+}
+
 @media (max-width: 1340px) {
   main {
     grid-template-columns: repeat(2, 1fr);
@@ -191,7 +198,7 @@ footer {
 
 @media (max-width: 1024px) {
   h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(2.3rem, 10vw, 3rem);
   }
 
   p {
@@ -199,9 +206,9 @@ footer {
   }
 
   .bottom-header {
-    flex-direction: column-reverse;
+    flex-direction: column;
     justify-content: center;
-    gap: 32px;
+    gap: 104px;
   }
 
   .bottom-header button {
@@ -216,5 +223,37 @@ footer {
 @media (max-width: 868px) {
   main {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-bar {
+    font-size: 1.2rem;
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 425px) {
+  .top-bar {
+    display: none;
+  }
+
+  .bottom-header {
+    height: 100vh;
+  }
+
+  .header-info {
+    gap: 24px;
+  }
+
+  .name-nav h1 {
+    font-size: clamp(1.3rem, 7vw, 1.6rem);
+  }
+
+  .name-nav .icons {
+    font-size: clamp(1.1rem, 5vw, 1.3rem);
   }
 }
