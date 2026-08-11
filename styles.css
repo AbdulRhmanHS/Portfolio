@@ -5,7 +5,7 @@ DONE: Make the responsive design for mobile screens
 DONE: Make the responsive design for wide screens
 
 -- Colors and fonts --
-TODO: Group the CSS using variables
+DONE: Group the CSS using variables
 TODO: Apply a different suitable color combination
 TODO: Apply a suitable font
 
@@ -13,6 +13,15 @@ TODO: Apply a suitable font
 TODO: Hide the menu elements and make a hamburger menu transition
 TODO: Make a dark theme
 */
+
+:root {
+  --accent-clr: rgb(247, 79, 79);
+  --background-clr: white;
+  --text-clr: black;
+  --small-font-size: 1rem;
+  --medium-font-size: 1.8rem;
+  --big-font-size: 3.3rem;
+}
 
 body {
   margin: 0;
@@ -28,11 +37,11 @@ a {
 }
 
 h1 {
-  font-size: 56px;
+  font-size: var(--big-font-size);
 }
 
 p {
-  font-size: 1.3rem;
+  font-size: var(--small-font-size);
 }
 
 h1,
@@ -45,16 +54,17 @@ ul {
   display: flex;
   justify-content: space-between;
   margin: 30px 40px;
-  font-size: 1.5rem;
+  font-size: calc(var(--medium-font-size) - 0.5rem);
   font-weight: bold;
 }
 
 #theme-toggle {
   aspect-ratio: 1/1;
-  height: 40px;
-  border: 3px solid black;
+  border: 3px solid var(--text-clr);
   border-radius: 50%;
-  background-color: white;
+  background-color: var(--background-clr);
+  font-size: calc(var(--medium-font-size) - 0.5rem);
+  cursor: pointer;
 }
 
 .nav-links {
@@ -86,15 +96,39 @@ ul {
   gap: 50px;
 }
 
+#first-name {
+  color: var(--accent-clr);
+}
+
+.header-info p {
+  font-size: calc(var(--small-font-size) + 0.3rem);
+}
+
+.header-btns {
+  display: flex;
+  gap: 16px;
+}
+
 .header-info button {
   padding: 15px;
   border: none;
   border-radius: 8px;
-  background-color: rgb(247, 79, 79);
-  color: white;
-  font-size: 1.3rem;
+  font-size: var(--small-font-size);
   font-weight: bold;
   align-self: start;
+  cursor: pointer;
+}
+
+#contact-me {
+  background-color: var(--accent-clr);
+  color: var(--background-clr);
+}
+
+#show-projects {
+  background-color: white;
+  outline: 2px solid var(--accent-clr);
+  outline-offset: -2px;
+  color: var(--accent-clr);
 }
 
 main {
@@ -107,9 +141,8 @@ main {
 
 .cards {
   display: grid;
-  /* width: 100%; */
   max-width: 520px;
-  background-color: white;
+  background-color: var(--background-clr);
   box-shadow: rgba(0, 0, 0, 0.1) 0 2px 10px;
   border-radius: 8px;
   overflow: hidden;
@@ -140,13 +173,13 @@ main {
 
 .name-nav h1 {
   font-weight: lighter;
-  font-size: 1.8rem;
+  font-size: var(--medium-font-size);
 }
 
 .name-nav .icons {
   display: flex;
   gap: 20px;
-  font-size: 1.5rem;
+  font-size: calc(var(--medium-font-size) - 0.2rem);
   align-items: center;
 }
 
@@ -172,16 +205,13 @@ footer {
   display: flex;
   align-items: center;
   gap: 8px;
+  font-size: var(--small-font-size);
 }
 
-.fa-location-dot {
-  font-size: 1.3rem;
-}
-
-.links {
+.footer-links {
   display: flex;
   gap: 30px;
-  font-size: 2rem;
+  font-size: var(--medium-font-size);
 }
 
 @media (min-width: 1921px) {
@@ -205,6 +235,10 @@ footer {
     font-size: clamp(1rem, 2.5vw, 1.3rem);
   }
 
+  .header-info p {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+  }
+
   .bottom-header {
     flex-direction: column;
     justify-content: center;
@@ -212,7 +246,7 @@ footer {
   }
 
   .bottom-header button {
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-size: clamp(0.8rem, 2.5vw, 1.3rem);
   }
 
   footer {
@@ -246,7 +280,7 @@ footer {
   }
 
   .header-info {
-    gap: 24px;
+    gap: 32px;
   }
 
   .name-nav h1 {
