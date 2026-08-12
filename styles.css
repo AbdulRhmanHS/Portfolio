@@ -6,25 +6,45 @@ DONE: Make the responsive design for wide screens
 
 -- Colors and fonts --
 DONE: Group the CSS using variables
-TODO: Apply a different suitable color combination
+DONE: Apply a different suitable color combination
 TODO: Apply a suitable font
 
 -- Themes and menu --
 TODO: Hide the menu elements and make a hamburger menu transition
-TODO: Make a dark theme
+DONE: Make a dark theme
+TODO: Make hover effects for the buttons and icons
 */
 
 :root {
-  --accent-clr: rgb(247, 79, 79);
-  --background-clr: white;
-  --text-clr: black;
+  --primary-clr: hsl(30, 52%, 52%);
+  --secondary-clr: hsl(29, 70%, 71%);
+  --secondary-clr-2: hsl(29 70% 71% / 0.35);
+  --secondary-clr-3: hsl(29 70% 71% / 0.28);
+  --accent-clr: hsl(30, 89%, 61%);
+  --background-clr: hsl(36, 33%, 97%);
+  --text-clr: hsl(30, 17%, 7%);
+  --box-shadows: rgba(0, 0, 0, 0.1) 0 2px 10px;
   --small-font-size: 1rem;
   --medium-font-size: 1.8rem;
   --big-font-size: 3.3rem;
 }
 
+[data-theme="dark"] {
+  --primary-clr: hsl(30, 52%, 48%);
+  --secondary-clr: hsl(29, 70%, 29%);
+  --secondary-clr-2: hsl(29 70% 29% / 0.35);
+  --secondary-clr-3: hsl(29 70% 29% / 0.28);
+  --accent-clr: hsl(30, 89%, 39%);
+  --background-clr: hsl(36, 33%, 3%);
+  --text-clr: hsl(30, 17%, 93%);
+  --card-clr: rgb(34, 34, 34);
+  --box-shadows: none;
+}
+
 body {
   margin: 0;
+  background-color: var(--background-clr);
+  color: var(--text-clr);
 }
 
 li {
@@ -34,6 +54,7 @@ li {
 a {
   color: initial;
   text-decoration: none;
+  color: var(--text-clr);
 }
 
 h1 {
@@ -50,6 +71,10 @@ ul {
   margin: 0;
 }
 
+i {
+  color: var(--primary-clr);
+}
+
 .top-bar {
   display: flex;
   justify-content: space-between;
@@ -60,11 +85,15 @@ ul {
 
 #theme-toggle {
   aspect-ratio: 1/1;
-  border: 3px solid var(--text-clr);
+  border: 2px solid var(--text-clr);
   border-radius: 50%;
   background-color: var(--background-clr);
   font-size: calc(var(--medium-font-size) - 0.5rem);
   cursor: pointer;
+}
+
+#theme-toggle i {
+  color: var(--text-clr);
 }
 
 .nav-links {
@@ -72,6 +101,14 @@ ul {
   align-items: center;
   gap: 30px;
   padding: 0;
+}
+
+.nav-links a {
+  transition: color 0.1s ease-in;
+}
+
+.nav-links a:hover {
+  color: var(--accent-clr);
 }
 
 .bottom-header {
@@ -97,7 +134,16 @@ ul {
 }
 
 #first-name {
-  color: var(--accent-clr);
+  background-image: linear-gradient(
+    90deg,
+    var(--primary-clr) 0%,
+    var(--secondary-clr) 70%,
+    var(--accent-clr) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .header-info p {
@@ -114,21 +160,18 @@ ul {
   border: none;
   border-radius: 8px;
   font-size: var(--small-font-size);
-  font-weight: bold;
   align-self: start;
   cursor: pointer;
 }
 
 #contact-me {
-  background-color: var(--accent-clr);
-  color: var(--background-clr);
+  background-color: var(--primary-clr);
+  color: var(--text-clr);
 }
 
 #show-projects {
-  background-color: white;
-  outline: 2px solid var(--accent-clr);
-  outline-offset: -2px;
-  color: var(--accent-clr);
+  background-color: var(--secondary-clr-2);
+  color: var(--text-clr);
 }
 
 main {
@@ -142,8 +185,7 @@ main {
 .cards {
   display: grid;
   max-width: 520px;
-  background-color: var(--background-clr);
-  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 10px;
+  background-color: var(--secondary-clr-3);
   border-radius: 8px;
   overflow: hidden;
 }
@@ -172,8 +214,8 @@ main {
 }
 
 .name-nav h1 {
-  font-weight: lighter;
   font-size: var(--medium-font-size);
+  color: var(--primary-clr);
 }
 
 .name-nav .icons {
@@ -184,7 +226,7 @@ main {
 }
 
 .cards .description {
-  color: rgb(148, 143, 143);
+  color: var(--text-clr);
 }
 
 footer {

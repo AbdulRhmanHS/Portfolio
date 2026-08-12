@@ -13,6 +13,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
+    <script src="javascript.js" defer></script>
+    <script>
+      const theme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", theme);
+    </script>
   </head>
   <body>
     <header>
@@ -31,7 +36,7 @@
           aria-label="Switch to dark theme"
           aria-pressed="false"
         >
-          <i class="fa-solid fa-moon"></i>
+          <i class="fa-solid fa-moon fa-fw"></i>
         </button>
       </div>
 
@@ -72,7 +77,7 @@
         </div>
         <div class="lower">
           <div class="name-nav">
-            <h1>Project name</h1>
+            <h1 class="project-name">Project name</h1>
             <div class="icons">
               <a href="#"><i class="fa-brands fa-github"></i></a>
               <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
@@ -92,7 +97,7 @@
         </div>
         <div class="lower">
           <div class="name-nav">
-            <h1>Project name</h1>
+            <h1 class="project-name">Project name</h1>
             <div class="icons">
               <a href="#"><i class="fa-brands fa-github"></i></a>
               <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
@@ -112,7 +117,7 @@
         </div>
         <div class="lower">
           <div class="name-nav">
-            <h1>Project name</h1>
+            <h1 class="project-name">Project name</h1>
             <div class="icons">
               <a href="#"><i class="fa-brands fa-github"></i></a>
               <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
@@ -132,7 +137,7 @@
         </div>
         <div class="lower">
           <div class="name-nav">
-            <h1>Project name</h1>
+            <h1 class="project-name">Project name</h1>
             <div class="icons">
               <a href="#"><i class="fa-brands fa-github"></i></a>
               <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
@@ -152,7 +157,7 @@
         </div>
         <div class="lower">
           <div class="name-nav">
-            <h1>Project name</h1>
+            <h1 class="project-name">Project name</h1>
             <div class="icons">
               <a href="#"><i class="fa-brands fa-github"></i></a>
               <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
@@ -172,7 +177,7 @@
         </div>
         <div class="lower">
           <div class="name-nav">
-            <h1>Project name</h1>
+            <h1 class="project-name">Project name</h1>
             <div class="icons">
               <a href="#"><i class="fa-brands fa-github"></i></a>
               <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
