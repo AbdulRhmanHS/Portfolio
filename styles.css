@@ -3,6 +3,7 @@
 DONE: Make the cards font more responsive
 DONE: Make the responsive design for mobile screens
 DONE: Make the responsive design for wide screens
+TODO: Adjust the size of the cards to be smaller
 
 -- Colors and fonts --
 DONE: Group the CSS using variables
@@ -10,41 +11,37 @@ DONE: Apply a different suitable color combination
 TODO: Apply a suitable font
 
 -- Themes and menu --
-TODO: Hide the menu elements and make a hamburger menu transition
 DONE: Make a dark theme
-TODO: Make hover effects for the buttons and icons
+DONE: Make hover effects for the buttons and icons
+TODO: Hide the menu elements and make a hamburger menu transition
 */
 
 :root {
-  --primary-clr: hsl(30, 52%, 52%);
-  --secondary-clr: hsl(29, 70%, 71%);
-  --secondary-clr-2: hsl(29 70% 71% / 0.35);
-  --secondary-clr-3: hsl(29 70% 71% / 0.28);
-  --accent-clr: hsl(30, 89%, 61%);
-  --background-clr: hsl(36, 33%, 97%);
-  --text-clr: hsl(30, 17%, 7%);
-  --box-shadows: rgba(0, 0, 0, 0.1) 0 2px 10px;
+  --bg-clr: 36 33% 97%;
+  --text-clr: 30 17% 7%;
+  --primary-clr: 30 52% 52%;
+  --secondary-clr: 29 70% 71%;
+  --accent-clr: 30 89% 61%;
+
   --small-font-size: 1rem;
   --medium-font-size: 1.8rem;
   --big-font-size: 3.3rem;
+
+  --border-radius: 5px;
 }
 
 [data-theme="dark"] {
-  --primary-clr: hsl(30, 52%, 48%);
-  --secondary-clr: hsl(29, 70%, 29%);
-  --secondary-clr-2: hsl(29 70% 29% / 0.35);
-  --secondary-clr-3: hsl(29 70% 29% / 0.28);
-  --accent-clr: hsl(30, 89%, 39%);
-  --background-clr: hsl(36, 33%, 3%);
-  --text-clr: hsl(30, 17%, 93%);
-  --card-clr: rgb(34, 34, 34);
-  --box-shadows: none;
+  --bg-clr: 36 33% 3%;
+  --text-clr: 30 17% 93%;
+  --primary-clr: 30 52% 48%;
+  --secondary-clr: 29 70% 29%;
+  --accent-clr: 30 89% 39%;
 }
 
 body {
   margin: 0;
-  background-color: var(--background-clr);
-  color: var(--text-clr);
+  background-color: hsl(var(--bg-clr));
+  color: hsl(var(--text-clr));
 }
 
 li {
@@ -54,7 +51,7 @@ li {
 a {
   color: initial;
   text-decoration: none;
-  color: var(--text-clr);
+  color: hsl(var(--text-clr));
 }
 
 h1 {
@@ -72,7 +69,12 @@ ul {
 }
 
 i {
-  color: var(--primary-clr);
+  color: hsl(var(--text-clr));
+  transition: color 0.08s ease-in;
+}
+
+a i:hover {
+  color: hsl(var(--accent-clr));
 }
 
 .top-bar {
@@ -85,15 +87,15 @@ i {
 
 #theme-toggle {
   aspect-ratio: 1/1;
-  border: 2px solid var(--text-clr);
+  border: 2px solid hsl(var(--text-clr));
   border-radius: 50%;
-  background-color: var(--background-clr);
+  background-color: hsl(var(--bg-clr));
   font-size: calc(var(--medium-font-size) - 0.5rem);
   cursor: pointer;
 }
 
 #theme-toggle i {
-  color: var(--text-clr);
+  color: hsl(var(--text-clr));
 }
 
 .nav-links {
@@ -104,11 +106,11 @@ i {
 }
 
 .nav-links a {
-  transition: color 0.1s ease-in;
+  transition: color 0.08s ease-in;
 }
 
 .nav-links a:hover {
-  color: var(--accent-clr);
+  color: hsl(var(--accent-clr));
 }
 
 .bottom-header {
@@ -136,9 +138,9 @@ i {
 #first-name {
   background-image: linear-gradient(
     90deg,
-    var(--primary-clr) 0%,
-    var(--secondary-clr) 70%,
-    var(--accent-clr) 100%
+    hsl(var(--primary-clr)) 0%,
+    hsl(var(--secondary-clr)) 70%,
+    hsl(var(--accent-clr)) 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -158,20 +160,26 @@ i {
 .header-info button {
   padding: 15px;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   font-size: var(--small-font-size);
   align-self: start;
   cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 #contact-me {
-  background-color: var(--primary-clr);
-  color: var(--text-clr);
+  background-color: hsl(var(--primary-clr));
+  color: #ffffff;
 }
 
 #show-projects {
-  background-color: var(--secondary-clr-2);
-  color: var(--text-clr);
+  background-color: hsl(var(--secondary-clr) / 0.3);
+  color: hsl(var(--text-clr));
+}
+
+#contact-me:hover,
+#show-projects:hover {
+  transform: translateY(-2px);
 }
 
 main {
@@ -184,9 +192,8 @@ main {
 
 .cards {
   display: grid;
-  max-width: 520px;
-  background-color: var(--secondary-clr-3);
-  border-radius: 8px;
+  background-color: hsl(var(--text-clr) / 0.1);
+  border-radius: var(--border-radius);
   overflow: hidden;
 }
 
@@ -215,7 +222,7 @@ main {
 
 .name-nav h1 {
   font-size: var(--medium-font-size);
-  color: var(--primary-clr);
+  font-weight: normal;
 }
 
 .name-nav .icons {
@@ -226,7 +233,7 @@ main {
 }
 
 .cards .description {
-  color: var(--text-clr);
+  color: hsl(var(--text-clr) / 0.6);
 }
 
 footer {
