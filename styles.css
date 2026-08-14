@@ -4,7 +4,7 @@ DONE: Make the cards font more responsive
 DONE: Make the responsive design for mobile screens
 DONE: Make the responsive design for wide screens
 DONE: Adjust the size of the cards to be smaller
-TODO: Adjust the font sizes to be more responsive
+DONE: Adjust the font sizes to be more responsive
 
 -- Colors and fonts --
 DONE: Group the CSS using variables
@@ -26,9 +26,9 @@ TODO: Hide the menu elements and make a hamburger menu transition
 
   --small-font-size: 1rem;
   --medium-font-size: clamp(1.5rem, 2.5vw, 1.8rem);
-  --big-font-size: 3.3rem;
+  --big-font-size: clamp(2.2rem, 4vw + 1rem, 3rem);
 
-  --border-radius: 12px;
+  --border-radius: 5px;
 }
 
 [data-theme="dark"] {
@@ -114,7 +114,7 @@ a i:hover {
   color: hsl(var(--accent-clr));
 }
 
-.bottom-header {
+.hero {
   height: calc(100vh - 100px);
   display: flex;
   justify-content: space-between;
@@ -122,14 +122,14 @@ a i:hover {
   gap: clamp(104px, 10vw, 208px);
 }
 
-.bottom-header img {
+.hero img {
   display: block;
   height: auto;
   width: clamp(200px, 40vw, 500px);
   align-self: center;
 }
 
-.header-info {
+.hero-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -149,16 +149,16 @@ a i:hover {
   color: transparent;
 }
 
-.header-info p {
+.hero-text p {
   font-size: calc(var(--small-font-size) + 0.3rem);
 }
 
-.header-btns {
+.hero-btns {
   display: flex;
   gap: 16px;
 }
 
-.header-info button {
+.hero-btns button {
   padding: 15px;
   border: none;
   border-radius: var(--border-radius);
@@ -203,7 +203,7 @@ a i:hover {
 .card {
   display: flex;
   flex-direction: column;
-  background-color: hsl(var(--secondary-clr) / 0.15);
+  background-color: hsl(var(--text-clr) / 0.05);
   border-radius: var(--border-radius);
   overflow: hidden;
   cursor: pointer;
@@ -237,7 +237,7 @@ a i:hover {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 32px;
+  padding: 24px;
 }
 
 .name-nav {
@@ -250,11 +250,8 @@ a i:hover {
   font-weight: normal;
 }
 
-.name-nav .icons {
-  display: flex;
-  gap: 20px;
-  font-size: calc(var(--medium-font-size) - 0.4rem);
-  align-items: center;
+.name-nav i {
+  font-size: calc(var(--medium-font-size) - 0.2rem);
 }
 
 .card .description {
@@ -305,26 +302,10 @@ footer {
 }
 
 @media (max-width: 1024px) {
-  h1 {
-    font-size: clamp(2.3rem, 10vw, 3rem);
-  }
-
-  p {
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-  }
-
-  .header-info p {
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-  }
-
-  .bottom-header {
+  .hero {
     flex-direction: column;
     justify-content: center;
     gap: 104px;
-  }
-
-  .bottom-header button {
-    font-size: clamp(0.8rem, 2.5vw, 1.3rem);
   }
 
   footer {
@@ -347,19 +328,15 @@ footer {
     display: none;
   }
 
-  .bottom-header {
+  .hero {
     height: 100vh;
   }
 
-  .header-info {
+  .hero-text {
     gap: 32px;
   }
 
-  /* .name-nav h1 {
-    font-size: clamp(1.3rem, 7vw, 1.6rem);
+  .hero-btns button {
+    font-size: calc(var(--small-font-size) - 0.15rem);
   }
-
-  .name-nav .icons {
-    font-size: clamp(1.1rem, 5vw, 1.3rem);
-  } */
 }
