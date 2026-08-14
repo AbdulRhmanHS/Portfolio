@@ -3,7 +3,8 @@
 DONE: Make the cards font more responsive
 DONE: Make the responsive design for mobile screens
 DONE: Make the responsive design for wide screens
-TODO: Adjust the size of the cards to be smaller
+DONE: Adjust the size of the cards to be smaller
+TODO: Adjust the font sizes to be more responsive
 
 -- Colors and fonts --
 DONE: Group the CSS using variables
@@ -24,10 +25,10 @@ TODO: Hide the menu elements and make a hamburger menu transition
   --accent-clr: 30 89% 61%;
 
   --small-font-size: 1rem;
-  --medium-font-size: 1.8rem;
+  --medium-font-size: clamp(1.5rem, 2.5vw, 1.8rem);
   --big-font-size: 3.3rem;
 
-  --border-radius: 5px;
+  --border-radius: 12px;
 }
 
 [data-theme="dark"] {
@@ -182,33 +183,57 @@ a i:hover {
   transform: translateY(-2px);
 }
 
-main {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  justify-items: center;
-  padding: 50px clamp(16px, 5vw, 104px);
+.main-content {
+  width: 100%;
+  min-height: 100vh;
 }
 
-.cards {
+.projects-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+.grid {
   display: grid;
-  background-color: hsl(var(--text-clr) / 0.1);
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: hsl(var(--secondary-clr) / 0.15);
   border-radius: var(--border-radius);
   overflow: hidden;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease-out,
+    box-shadow 0.3s ease-out;
 }
 
-.cards img {
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card img {
   width: 100%;
-  aspect-ratio: 1/1;
+  height: 100%;
   object-fit: cover;
-  display: block;
+  transition: transform 0.7s ease;
 }
 
-.cards .upper {
-  width: 100%;
+.card:hover img {
+  transform: scale(1.05);
 }
 
-.cards .lower {
+.card .upper {
+  height: 256px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card .lower {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -228,11 +253,11 @@ main {
 .name-nav .icons {
   display: flex;
   gap: 20px;
-  font-size: calc(var(--medium-font-size) - 0.2rem);
+  font-size: calc(var(--medium-font-size) - 0.4rem);
   align-items: center;
 }
 
-.cards .description {
+.card .description {
   color: hsl(var(--text-clr) / 0.6);
 }
 
@@ -263,15 +288,19 @@ footer {
   font-size: var(--medium-font-size);
 }
 
-@media (min-width: 1921px) {
-  main {
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 1340px) {
-  main {
-    grid-template-columns: repeat(2, 1fr);
+@media (min-width: 1024px) {
+  .projects-container {
+    padding: 32px 64px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -303,12 +332,6 @@ footer {
   }
 }
 
-@media (max-width: 868px) {
-  main {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media (max-width: 768px) {
   .top-bar {
     font-size: 1.2rem;
@@ -332,11 +355,11 @@ footer {
     gap: 32px;
   }
 
-  .name-nav h1 {
+  /* .name-nav h1 {
     font-size: clamp(1.3rem, 7vw, 1.6rem);
   }
 
   .name-nav .icons {
     font-size: clamp(1.1rem, 5vw, 1.3rem);
-  }
+  } */
 }
