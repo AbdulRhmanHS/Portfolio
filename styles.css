@@ -14,7 +14,7 @@ TODO: Apply a suitable font
 -- Themes and menu --
 DONE: Make a dark theme
 DONE: Make hover effects for the buttons and icons
-TODO: Hide the menu elements and make a hamburger menu transition
+DONE: Hide the menu elements and make a hamburger menu
 */
 
 :root {
@@ -78,12 +78,29 @@ a i:hover {
   color: hsl(var(--accent-clr));
 }
 
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 40px;
+}
+
 .top-bar {
   display: flex;
   justify-content: space-between;
-  margin: 30px 40px;
+  padding: 15px 30px;
   font-size: calc(var(--medium-font-size) - 0.5rem);
   font-weight: bold;
+  width: 100%;
+  max-width: 1300px;
+}
+
+#menu-toggle {
+  align-self: flex-start;
+  display: none;
+  background: none;
+  border: none;
+  padding: 24px 0;
 }
 
 #theme-toggle {
@@ -115,11 +132,21 @@ a i:hover {
 }
 
 .hero {
-  height: calc(100vh - 100px);
+  padding-top: 56px;
+  min-height: calc(100vh - 56px - 72px);
   display: flex;
   justify-content: space-between;
-  margin: 0 clamp(24px, 6vw, 104px);
-  gap: clamp(104px, 10vw, 208px);
+  align-items: center;
+  max-width: 1300px;
+  gap: 160px;
+}
+
+.hero-img-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 64px - 318px - 100px);
+  width: 100%;
 }
 
 .hero img {
@@ -133,7 +160,7 @@ a i:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 50px;
+  gap: 24px;
 }
 
 #first-name {
@@ -150,7 +177,7 @@ a i:hover {
 }
 
 .hero-text p {
-  font-size: calc(var(--small-font-size) + 0.3rem);
+  font-size: clamp(1rem, 1vw + 0.75rem, 1.3rem);
 }
 
 .hero-btns {
@@ -320,8 +347,8 @@ footer > p {
 @media (max-width: 1024px) {
   .hero {
     flex-direction: column;
-    justify-content: center;
-    gap: 104px;
+    gap: 32px;
+    justify-content: start;
   }
 
   footer {
@@ -330,8 +357,8 @@ footer > p {
 }
 
 @media (max-width: 768px) {
-  .top-bar {
-    font-size: 1.2rem;
+  header {
+    padding: 0 30px;
   }
 
   .nav-links {
@@ -344,12 +371,16 @@ footer > p {
 }
 
 @media (max-width: 425px) {
-  .top-bar {
-    display: none;
+  header {
+    padding: 0 20px;
   }
 
-  .hero {
-    height: 100vh;
+  #menu-toggle {
+    display: block;
+  }
+
+  .top-bar {
+    display: none;
   }
 
   .hero-text {
