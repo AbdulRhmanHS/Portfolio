@@ -1,6 +1,7 @@
 // DONE: Apply the dark theme
-// TODO: Trigger the hamburger menu
+// DONE: Trigger the hamburger menu
 
+// --- Dark theme ---
 const toggleBtn = document.getElementById("theme-toggle");
 const htmlEl = document.documentElement;
 
@@ -32,3 +33,19 @@ function updateButton(theme) {
     isDark ? "Switch to light theme" : "Switch to dark theme",
   );
 }
+
+// --- Hamburger menu ---
+const menuBtn = document.getElementById("menu-toggle");
+const topBar = document.querySelector(".top-bar");
+const overlay = document.getElementById("menu-overlay");
+
+function toggleMenu() {
+  topBar.classList.toggle("mini");
+  overlay.classList.toggle("is-active");
+  const isOpen = topBar.classList.contains("mini");
+  menuBtn.setAttribute("aria-expanded", isOpen);
+}
+
+menuBtn.addEventListener("click", toggleMenu);
+
+overlay.addEventListener("click", toggleMenu);
