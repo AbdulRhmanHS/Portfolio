@@ -41,6 +41,10 @@ DONE: Hide the menu elements and make a hamburger menu
   --accent-clr: 30 89% 39%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   background-color: hsl(var(--bg-clr));
@@ -62,11 +66,17 @@ h1 {
   font-size: var(--big-font-size);
 }
 
+h2 {
+  font-size: calc(var(--big-font-size) - 0.5rem);
+}
+
 p {
   font-size: var(--small-font-size);
 }
 
 h1,
+h2,
+h3,
 p,
 ul {
   margin: 0;
@@ -77,7 +87,8 @@ i {
   transition: color 0.08s ease-in;
 }
 
-a i:hover {
+a i:hover,
+.project-name a:hover {
   color: hsl(var(--accent-clr));
 }
 
@@ -188,7 +199,7 @@ header {
   gap: 16px;
 }
 
-.hero-btns button {
+.hero-btns a {
   padding: 15px;
   border: none;
   border-radius: var(--border-radius);
@@ -219,6 +230,10 @@ header {
 }
 
 .projects-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
   max-width: 1280px;
   margin: 0 auto;
   padding: 32px 20px;
@@ -273,11 +288,13 @@ header {
 .name-nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-.name-nav h1 {
+.project-name {
   font-size: var(--medium-font-size);
   font-weight: normal;
+  transition: color 0.08s ease-in;
 }
 
 .name-nav i {
@@ -458,7 +475,7 @@ footer > p {
     font-size: 0.9rem;
   }
 
-  .hero-btns button {
+  .hero-btns a {
     font-size: calc(var(--small-font-size) - 0.15rem);
   }
 }
